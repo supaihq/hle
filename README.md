@@ -10,16 +10,16 @@
 
 [Sup AI](https://sup.ai) has achieved **52.15% accuracy** on [Humanity's Last Exam (HLE)](https://lastexam.ai/), surpassing all individual frontier models and setting a new SOTA on this exceptionally challenging benchmark. This result demonstrates that ensemble orchestration can unlock capabilities beyond what any single model achieves alone.
 
-| Metric | Value |
-|--------|-------|
-| **Accuracy** | 52.15% |
-| **Questions Evaluated** | 1,369 / 2,500 public* |
-| **Lead Over Next Best** | +7.49 percentage points |
-| **Calibration Error (ECE)** | 35.22%** |
+| Metric                      | Value                   |
+| --------------------------- | ----------------------- |
+| **Accuracy**                | 52.15%                  |
+| **Questions Evaluated**     | 1,369 / 2,500 public\*  |
+| **Lead Over Next Best**     | +7.41 percentage points |
+| **Calibration Error (ECE)** | 36.54%\*\*              |
 
 \* Questions were selected randomly. We plan to evaluate all 2,500 public questions.
 
-\** HLE measures Expected Calibration Error (ECE) by asking models to self-report their confidence, which we believe is fundamentally flawed; confidence can only truly be measured by analyzing output token probability distributions (Sup AI uses these extensively). An ECE of 35.22% means the model's stated confidence is, on average, 35.22 percentage points away from its true accuracy.
+\*\* HLE measures Expected Calibration Error (ECE) by asking models to self-report their confidence, which we believe is fundamentally flawed; confidence can only truly be measured by analyzing output token probability distributions (Sup AI uses these extensively). An ECE of 36.54% means the model's stated confidence is, on average, 36.54 percentage points away from its true accuracy.
 
 ## What is Humanity's Last Exam?
 
@@ -31,20 +31,20 @@ Unlike conventional benchmarks that have become saturated, HLE was specifically 
 
 Sup AI's ensemble approach significantly outperforms all individual frontier models:
 
-| Model | Accuracy | n | Δ vs Sup AI |
-|-------|----------|---|-------------|
-| **Sup AI** | **52.15%** | 1,369 | — |
-| Google Gemini 3 Pro Preview | 44.66% | 1,330 | -7.49 |
-| OpenAI GPT-5 Pro | 39.43% | 1,192 | -12.72 |
-| OpenAI GPT-5.1 | 38.18% | 1,286 | -13.97 |
-| Anthropic Claude Opus 4.5 | 29.56% | 1,333 | -22.59 |
-| xAI Grok-4 | 29.02% | 1,151 | -23.13 |
-| DeepSeek v3.2 Thinking | 24.08% | 1,171 | -28.07 |
-| ZhipuAI GLM-4.6 | 23.08% | 52 | -29.07 |
-| Anthropic Claude Sonnet 4.5 | 18.06% | 1,257 | -34.09 |
-| Alibaba Qwen3 Max | 17.65% | 51 | -34.50 |
-| Moonshot Kimi K2 Thinking | 17.57% | 1,241 | -34.58 |
-| Google Gemini 2.5 Pro | 16.51% | 1,254 | -35.64 |
+| Model                       | Accuracy   | n     | Δ vs Sup AI |
+| --------------------------- | ---------- | ----- | ----------- |
+| **Sup AI**                  | **52.15%** | 1,369 | —           |
+| Google Gemini 3 Pro Preview | 44.74%     | 1,332 | -7.41       |
+| OpenAI GPT-5 Pro            | 39.53%     | 1,194 | -12.62      |
+| OpenAI GPT-5.1              | 38.23%     | 1,287 | -13.92      |
+| Anthropic Claude Opus 4.5   | 29.66%     | 1,335 | -22.49      |
+| xAI Grok-4                  | 29.05%     | 1,153 | -23.10      |
+| DeepSeek v3.2 Thinking      | 24.13%     | 1,173 | -28.02      |
+| ZhipuAI GLM-4.6             | 23.08%     | 52    | -29.07      |
+| Anthropic Claude Sonnet 4.5 | 18.11%     | 1,259 | -34.04      |
+| Alibaba Qwen3 Max           | 17.31%     | 52    | -34.84      |
+| Moonshot Kimi K2 Thinking   | 17.55%     | 1,242 | -34.60      |
+| Google Gemini 2.5 Pro       | 16.51%     | 1,254 | -35.64      |
 
 ## How Sup AI Works
 
@@ -84,6 +84,7 @@ User: [Question text + optional image]
 ### Judge Criteria
 
 The automated judge uses GPT-5.1 to extract the final answer and compare it against the ground truth, accounting for:
+
 - Exact matches
 - Semantic equivalence
 - Numerical tolerance for quantitative answers
@@ -101,6 +102,7 @@ pip3.13 install -r requirements.txt
 ```
 
 Required environment variables:
+
 - `SUPAI_API_KEY`: Your Sup AI API key (contact us)
 - `OPENAI_API_KEY`: OpenAI API key (for judging)
 
@@ -127,7 +129,7 @@ python src/run_metrics.py --predictions judged_hle_pro.json
 
 With n=1,369 questions, the 95% confidence interval for Sup AI's accuracy is approximately ±2.65 percentage points, meaning the true accuracy lies between 49.50% and 54.80% with 95% confidence.
 
-The gap between Sup AI (52.15%) and the next-best model, Gemini 3 Pro Preview (44.66%), is statistically significant at p < 0.001.
+The gap between Sup AI (52.15%) and the next-best model, Gemini 3 Pro Preview (44.74%), is statistically significant at p < 0.001.
 
 ## Implications
 
@@ -147,17 +149,17 @@ See [questions.md](/questions.md)
 
 ## Files
 
-| File | Description |
-|------|-------------|
-| `src/run_model.py` | Generates predictions using Sup AI API |
-| `src/run_judge.py` | Evaluates predictions against ground truth |
-| `src/run_metrics.py` | Computes metrics and generates visualizations |
-| `hle_pro.json` | Raw model predictions |
-| `judged_hle_pro.json` | Predictions with judge evaluations |
-| `metrics.json` | Computed accuracy metrics by model |
-| `metrics.png` | Accuracy comparison bar chart |
-| `questions.md` | Per-question correctness table for each model |
-| `traces/` | Full response traces for each question, exactly as it would be streamed from the Sup AI API |
+| File                  | Description                                                                                 |
+| --------------------- | ------------------------------------------------------------------------------------------- |
+| `src/run_model.py`    | Generates predictions using Sup AI API                                                      |
+| `src/run_judge.py`    | Evaluates predictions against ground truth                                                  |
+| `src/run_metrics.py`  | Computes metrics and generates visualizations                                               |
+| `hle_pro.json`        | Raw model predictions                                                                       |
+| `judged_hle_pro.json` | Predictions with judge evaluations                                                          |
+| `metrics.json`        | Computed accuracy metrics by model                                                          |
+| `metrics.png`         | Accuracy comparison bar chart                                                               |
+| `questions.md`        | Per-question correctness table for each model                                               |
+| `traces/`             | Full response traces for each question, exactly as it would be streamed from the Sup AI API |
 
 ## Citation
 

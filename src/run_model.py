@@ -9,7 +9,7 @@ from tqdm.asyncio import tqdm_asyncio
 client = AsyncOpenAI(
     timeout=45 * 60,
     max_retries=0,
-    base_url="https://api.sup.ai/openai/v1",
+    base_url="https://api.sup.ai/v1/openai",
     api_key=os.environ["SUPAI_API_KEY"],
 )
 
@@ -41,6 +41,7 @@ async def attempt_question(question):
         stream = await client.chat.completions.create(
             model=args.model,
             messages=messages,
+            extra_body={"include_supai_chunks": True},
             stream=True,
         )
 
