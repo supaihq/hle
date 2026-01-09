@@ -1,6 +1,36 @@
+<p align="center">
+  <a href="https://sup.ai/research/hle-white-paper-jan-9-2026.pdf">
+    <img src="https://img.shields.io/badge/📄_Read_the_Whitepaper-sup.ai-5046e5?style=for-the-badge" alt="Read the Whitepaper" />
+  </a>
+</p>
+
 # Sup AI Achieves 52.15% on Humanity's Last Exam
 
 **The new leader on the world's most challenging AI benchmark**
+
+---
+
+### 🔬 New: Technical Whitepaper Released
+
+We've published the full technical whitepaper detailing our methodology, architecture, and the counterintuitive insights that emerged from analyzing 1,369 questions across 18+ frontier models.
+
+**Key discoveries:**
+
+- **3 "Impossible Solves"** — Three times, Sup AI produced correct answers when _every single model_ in the ensemble was wrong. This is constructive synthesis: extracting valid reasoning fragments from incorrect attempts and fusing them via confidence-weighted verification. Standard ensemble theory says this shouldn't be possible.
+
+- **The Specialist Effect** — Common wisdom suggests you should route queries to the smartest model. Our data proves otherwise. Grok 4 (29.05% accuracy) uniquely solved 16 questions that stumped every other model—including GPT-5 Pro at 39.53%, which only managed 9 unique solves. Lower accuracy ≠ less valuable.
+
+- **Diversity > Correlation** — Gemini 3 Pro + Grok 4 (0.54 correlation) outperforms Gemini 3 Pro + GPT-5 Pro (0.75 correlation) despite GPT-5 Pro's higher individual accuracy. Ensembles need complementary blind spots.
+
+- **The IQ Curve Resilience** — Most models collapse when question consensus drops below 50%. Sup AI remains pegged at near-100% accuracy until consensus drops below 30%. Sup AI effectively filters signal from noise even when the majority of models are wrong.
+
+- **Theoretical Ceiling: 58.44%** — Without improving underlying models or leveraging tools, Sup AI could potentially reach 58.44% simply by closing the orchestration gap. The headroom is algorithmic, not infrastructural.
+
+- **The Frontier of Impossibility** — 575 questions (42% of HLE) remain unsolved by any model. This validates HLE as a future-proof benchmark and suggests ensembles are hitting a reasoning wall that will require fundamental architectural breakthroughs to breach.
+
+**[Read the full whitepaper →](https://sup.ai/research/hle-white-paper-jan-9-2026.pdf)**
+
+---
 
 > **Note**: Individual model scores below are higher than their published benchmarks because we use custom instructions, web search, and retry when confidence is too low. This causes **all** models to score higher than published results. However, relative rankings remain consistent with published results, and Sup AI maintains a significant lead.
 
