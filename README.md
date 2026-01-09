@@ -103,7 +103,7 @@ pip3.13 install -r requirements.txt
 
 Required environment variables:
 
-- `SUPAI_API_KEY`: Your Sup AI API key (contact us)
+- `SUPAI_API_KEY`: Your Sup AI API key ([sup.ai/api/keys](https://sup.ai/api/keys))
 - `OPENAI_API_KEY`: OpenAI API key (for judging)
 
 ### Run Evaluation
